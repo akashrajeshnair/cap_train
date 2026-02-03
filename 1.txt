@@ -1,0 +1,222 @@
+a small ecommerce company wants to analyze daily sales data.
+
+each order contains orderid, customer_name and order_amount.
+
+- has to store multiple orders
+- has to calculate the total number of sales
+- has to find the customer who has spent the most money
+- has to display the orders with value more than 1000
+
+data = [[1, "Akash", 5000],[2, "Raj", 400], [3, "Tom", 2400], [4, "John", 700]]
+
+def calculate_total_sales(data):
+    total = 0
+    for d in data:
+        total += d[2]
+    return total
+    
+def find_max_spender(data):
+    greatest, greatestpos = 0, 0
+    for d in data:
+        if d[2] > greatest:
+            greatest = d[2]
+            greatestpos = d[0]
+    return data[greatestpos-1][1]
+
+def find_orders_above_1000(data):
+    orders = []
+    for d in data:
+        if d[2] > 1000:
+            orders.append(d)
+    return orders
+
+print("total sales:")
+print(calculate_total_sales(data))
+print("max spender:")
+print(find_max_spender(data))
+print("orders above 1000")
+print(find_orders_above_1000(data))
+
+write a program to give a default password in a system. the system has to give only 3 chances to get the correct password.
+
+password = "hello"
+
+userpwd = ""
+
+for i in range(3):
+    print("Enter password")
+    userpwd = input()
+    if userpwd == password:
+        print("Logged in.")
+        break
+    else:
+        if i < 2:
+            print(f"Try again. {2-i} attempts left.")
+        elif i == 2:
+            print("System is locked due to failed attempts.")
+            break
+
+
+you own a supermarket. 
+
+
+total = 0
+items = []
+
+while True:
+    print("Enter item or Enter stop to cease billing")
+    item = input()
+    if item == "stop":
+        break
+    items.append(item)
+    print("Enter price")
+    total += int(input())
+    
+print("Items:")
+for item in items:
+    print(item)
+print("Total bill:")
+print(total)
+
+electricity bill calculator
+for first 100 units rs5pu
+for next 100 units rs7pu
+for above 200 units rs10pu
+
+print("Enter number of units consumed")
+units = int(input())
+price = 0
+
+if units > 200:
+    price = 100*5 + 100*7 + (units-200)*10
+elif units > 100:
+    price = 100*5 + (units-100)*7
+else:
+    price = units*5
+    
+print(f"The electricity bill for {units} units is {price}.")
+
+write a triangle type identifier given 3 sides of a triangle
+
+print("Enter sides of triangle.")
+print("Enter side A:")
+a = int(input())
+print("Enter side B:")
+b = int(input())
+print("Enter side C:")
+c = int(input())
+
+if a+b>c and b+c>a and c+a>b:
+    print("The given sides form a triangle")
+    if a == b == c:
+        print("The given triangle is an Equilateral triangle.")
+    elif a == b or b == c or c == a:
+        print("The given triangle is an Isoceles triangle.")
+    else:
+        print("The given triangle is a Scalene triangle.")
+else:
+    print("Given sides do not form a triangle.")
+    
+    
+if the annual income is less than or equal to 2lk50k - no tax
+if the annual income is between 2l50k to 5l - 5% tax
+5l to 10l - 10%
+more than 10l - 30%
+
+print("Enter annual salary: ")
+salary = float(input())
+tax = 0
+
+if salary <= 250000:
+    tax = 0
+elif salary <= 500000:
+    tax = 0.05*salary
+elif salary <= 1000000:
+    tax = 0.1*salary
+else:
+    tax = 0.3*salary
+    
+print(f"Tax levied is: {tax}")
+print(f"Salary: {salary}")
+print(f"Net Salary: {salary-tax}")
+
+your current balance in atm is 5000rs. you have to take the withdrawal amount from the user.
+if the withdrawal > balance : insufficient balance
+the withdrawal amount is a multiple of 100
+after withdrawing it should print the balance amount
+
+balance = 5000
+print("Enter withdrawal amount: ")
+withdrawal = int(input())
+
+if withdrawal%100 == 0:
+    if withdrawal < balance:
+        print(f"Withdrew the amount: {withdrawal}")
+        print(f"The current balance is : {balance-withdrawal}")
+    else:
+        print("Insufficient Balance.")
+else:
+    print("Withdrawal amount is not a multiple of 100.")
+    
+login system with role check. make a simple login program that consist of username, password and role.
+if username and password are correct, check if the role is admin or user.
+if credentials are wrong, give invalid as the response.
+
+users = [["user1", "hello", "admin"], ["user2", "hello123", "user"]]
+
+print("Enter username")
+uname = input()
+print("Enter password")
+pwd = input()
+found = False
+
+for user in users:
+    if user[0] == uname and user[1] == pwd:
+        print(f"Logged in as {user[2]}")
+        found = True
+        break
+    
+if found == False:
+    print("Invalid Credentials")
+
+[!]
+Separate even and odd numbers from an array.
+
+arr = [1, 2, 3, 4, 5]
+odd= []
+even= []
+for a in arr:
+    if a%2 == 0:
+        even.append(a)
+    else:
+        odd.append(a)
+
+print(odd)
+print(even)
+
+Reverse an array without built-in functions.
+
+arr = [1,2,3,4,5]
+
+left = 0
+right = len(arr)-1
+
+while left < right:
+    arr[left], arr[right] = arr[right], arr[left]
+    left+=1
+    right-=1
+    
+print(arr)
+
+
+Find the common elements between two arrays.
+arr1 = [1,2,3,4,5]
+arr2 = [2,3,4,5,6]
+common = []
+for a in arr1:
+    if a in arr2:
+        common.append(a)
+
+print(common)
+
+

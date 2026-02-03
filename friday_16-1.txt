@@ -1,0 +1,116 @@
+# swap without temp variable
+
+print("Enter a:")
+a = int(input())
+print("Enter b:")
+b = int(input())
+
+print(f"a = {a}, b = {b}")
+
+a = a+b
+b = a-b
+a = a-b
+
+print(f"a = {a}, b = {b}")
+
+# type analyzer
+print("Enter anything:")
+inp = input()
+print(f"You entered: {inp}")
+
+# count without loops
+print("Enter a string:")
+string = input()
+
+freq = {c: string.count(c) for c in string}
+print(freq)
+
+# last digit comparision
+print("Enter number 1:")
+n1 = input()
+print("Enter number 2:")
+n2 = input()
+
+if n1.isnumeric() and n2.isnumeric():
+    if n1[-1] == n2[-1]:
+        print("True")
+    else:
+        print("False")
+else:
+    print("Not a number")
+
+# password strength checker
+print("Enter a password:")
+password = input()
+number = False
+
+for p in password:
+    if p.isnumeric():
+        number = True
+
+if len(password) >= 8:
+    if number:
+        print("Password is Strong.")
+    else:
+        print("Password is weak: No number.")
+else:
+    print("Password is weak: Too short.")
+    
+# arithmetic expression evaluator
+print("Enter a:")
+a = int(input())
+print("Enter b:")
+b = int(input())
+print("Enter c:")
+c = int(input())
+
+print((a+b)*c//(a-b))
+
+# conditional string transformer
+print("Enter a string:")
+string = input()
+
+if len(string) % 2 == 0:
+    print(string[::-1])
+else:
+    print(string.upper())
+    
+# bitwise operations
+print("Enter a:")
+a = int(input())
+print("Enter b:")
+b = int(input())
+
+print("Bitwise AND", a&b)
+print("Bitwise OR", a|b)
+print("Bitwise XOR", a^b)
+
+# smart input detector
+print("Enter input:")
+string = input()
+
+if string.isnumeric():
+    print(int(string)**2)
+else:
+    print(string[::-1])
+    
+# palidrome checker
+
+print("Enter a string:")
+string = input()
+
+string = string.lower()
+
+if string == string[::-1]:
+    print("Yes, it is a palindrome.")
+else:
+    print("No, it is not a palindrome.")
+    
+# times tables
+print("Enter a number")
+n = int(input())
+
+for i in range(1, 11):
+    print(f"{n}*{i}={n*i}")
+    
+# 

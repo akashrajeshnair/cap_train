@@ -1,0 +1,6 @@
+file = open("test.txt", 'r')
+print("Filename: ", file.name)
+print("Mode: ", file.mode)
+print("Is Closed?: ", file.closed)
+file.close()
+print("Is Closed?: ", file.closed)
