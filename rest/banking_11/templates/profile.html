@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Profile</title>
+    </head>
+    <body>
+        <h1>Profile</h1>
+        <p><strong>Account Number:</strong> {{ account['account_no'] }}</p>
+        <p><strong>Name:</strong> {{ account['name'] }}</p>
+        <p><strong>Balance:</strong> ₹{{ account['balance'] }}</p>
+        <p><strong>Salary:</strong> ₹{{ account['salary'] }}</p>
+        <p><strong>Aadhar Card No:</strong> {{ account['aadhar_card_no'] }}</p>
+        <p><strong>PAN Card No:</strong> {{ account['pan_card_no'] }}</p>
+        <p><strong>Phone Number:</strong> {{ account['phone_number'] }}</p>
+        <p><strong>Account Type:</strong> {{ account['account_type'] }}</p>
+        <br>
+        <a href="/profile/update">Edit Profile</a>
+        <br>
+        <a href="/profile/delete">Delete Profile</a>
+        <br><br>
+        <a href="/">Go Back</a>
+    </body>
+</html>

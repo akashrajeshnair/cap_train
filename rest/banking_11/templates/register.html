@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register</title>
+</head>
+<body>
+    <h1>Register</h1>
+    
+    <form action="/register" method="POST">
+        <h3>User Details</h3>
+        
+        <label>Username:</label>
+        <input type="text" name="username" required><br><br>
+        
+        <label>Password:</label>
+        <input type="password" name="password" required><br><br>
+        
+        <h3>Account Details</h3>
+        
+        <label>Name:</label>
+        <input type="text" name="name" required><br><br>
+        
+        <label>Balance:</label>
+        <input type="number" step="0.01" name="balance" required><br><br>
+        
+        <label>Salary:</label>
+        <input type="number" step="0.01" name="salary" required><br><br>
+        
+        <label>Aadhar Card No:</label>
+        <input type="text" name="aadhar_card_no" required><br><br>
+        
+        <label>PAN Card No:</label>
+        <input type="text" name="pan_card_no" required><br><br>
+        
+        <label>Phone Number:</label>
+        <input type="text" name="phone_number" required><br><br>
+        
+        <label>Account Type:</label>
+        <select name="account_type" required>
+            <option value="savings">Savings</option>
+            <option value="fd">Fixed Deposit</option>
+            <option value="recurring">Recurring</option>
+        </select><br><br>
+        
+        <input type="submit" value="Register">
+    </form>
+    
+    <br>
+    <p>Already have an account? <a href="/login">Login</a></p>
+</body>
+</html>
