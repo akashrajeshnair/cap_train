@@ -1,0 +1,8 @@
+flask
+flask-smorest
+marshmallow
+sqlalchemy
+pymysql
+echo flask-migrate>>requirements.txt
+echo edited
+echo flask-migrate>>requirements.txt
