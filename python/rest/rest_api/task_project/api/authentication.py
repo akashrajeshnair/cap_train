@@ -1,6 +1,6 @@
 from flask import Blueprint, request, jsonify
-from task_project.db.models import User, Base
-from task_project.db.db import session_local, engine
+from db.models import User, Base
+from db.db import session_local, engine
 from functools import wraps
 import jwt
 import datetime

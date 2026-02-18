@@ -1,7 +1,7 @@
 from sqlalchemy import create_engine, text
 from sqlalchemy.orm import sessionmaker
 
-CONNECTION_STRING = 'mysql+pymysql://akashnair@localhost:admin@localhost:3306'
+CONNECTION_STRING = 'mysql+pymysql://akashnair@localhost:admin@host.docker.internal:3306'
 
 engine = create_engine(CONNECTION_STRING, echo=True)
 

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Account Management</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <h1>Account Management</h1>
+    <nav>
+        <a href="index.html">Home</a> | 
+        <a href="customer.html">Customers</a> | 
+        <a href="transaction.html">Transactions</a>
+    </nav>
+
+    <div id="account-form">
+        <h2>Create Account</h2>
+        <form id="addAccountForm">
+            <select id="customerId" required>
+                <option value="">Select Customer</option>
+            </select><br><br>
+            <select id="accountType" required>
+                <option value="">Select Account Type</option>
+                <option value="savings">Savings</option>
+                <option value="current">Current</option>
+                <option value="fixed_deposit">Fixed Deposit</option>
+            </select><br><br>
+            <input type="number" id="initialBalance" placeholder="Initial Balance" min="0" step="0.01" required><br><br>
+            <button type="submit">Create Account</button>
+        </form>
+    </div>
+
+    <div id="account-list">
+        <h2>Accounts</h2>
+        <button onclick="loadAccounts()">Load Accounts</button>
+        <div id="accounts"></div>
+    </div>
+
+    <div id="account-update" style="display:none;">
+        <h2>Update Account</h2>
+        <form id="updateAccountForm">
+            <input type="hidden" id="updateAccountId">
+            <select id="updateAccountType" required>
+                <option value="savings">Savings</option>
+                <option value="current">Current</option>
+                <option value="fixed_deposit">Fixed Deposit</option>
+            </select><br><br>
+            <input type="number" id="updateBalance" placeholder="Balance" min="0" step="0.01" required><br><br>
+            <button type="submit">Update Account</button>
+            <button type="button" onclick="cancelAccountUpdate()">Cancel</button>
+        </form>
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+        // Account-specific initialization
+        document.addEventListener('DOMContentLoaded', function() {
+            loadCustomers();
+            loadAccounts();
+            setupAccountForms();
+        });
+    </script>
+</body>
+</html>

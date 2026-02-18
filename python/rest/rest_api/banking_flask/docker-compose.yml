@@ -1,0 +1,61 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: banking_mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: banking_db
+      MYSQL_USER: banking
+      MYSQL_PASSWORD: banking_password
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - banking_network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-prootpassword"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  flask_app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: banking_flask_app
+    environment:
+      DATABASE_URL: mysql+pymysql://banking:banking_password@mysql:3306/banking_db
+      FLASK_ENV: development
+      FLASK_DEBUG: 1
+    ports:
+      - "5000:5000"
+    volumes:
+      - .:/app
+    depends_on:
+      mysql:
+        condition: service_healthy
+    networks:
+      - banking_network
+    command: python app.py
+
+  nginx:
+    image: nginx:latest
+    container_name: banking_nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./html:/usr/share/nginx/html:ro
+    depends_on:
+      - flask_app
+    networks:
+      - banking_network
+
+volumes:
+  mysql_data:
+
+networks:
+  banking_network:
+    driver: bridge

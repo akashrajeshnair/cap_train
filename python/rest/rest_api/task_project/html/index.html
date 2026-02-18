@@ -3,191 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Task Management System</title>
+    <title>Task Management - Home</title>
     <style>
-        .container {
-            display: flex;
-        }
-        .left-column {
-            width: 50%;
-        }
-        .right-column {
-            width: 50%;
-        }
-        #token-display {
-            word-break: break-all;
-            display: inline-block;
-            max-width: 400px;
-        }
+        body { font-family: Arial, sans-serif; }
+        .nav { margin: 20px 0; }
+        .nav a { margin-right: 12px; }
     </style>
 </head>
 <body>
     <h1>Task Management System</h1>
-    
-    <div class="container">
-        <div class="left-column">
-            <div id="auth-section">
-        <h2>Authentication</h2>
-        
-        <h3>Register</h3>
-        <form id="register-form">
-            <input type="text" id="reg-username" placeholder="Username" required><br>
-            <input type="email" id="reg-email" placeholder="Email" required><br>
-            <input type="password" id="reg-password" placeholder="Password" required><br>
-            <select id="reg-role" required>
-                <option value="">Select Role</option>
-                <option value="employee">Employee</option>
-                <option value="manager">Manager</option>
-                <option value="admin">Admin</option>
-            </select><br>
-            <input type="text" id="reg-department" placeholder="Department" required><br>
-            <button type="submit">Register</button>
-        </form>
-        
-        <h3>Login</h3>
-        <form id="login-form">
-            <input type="text" id="login-username" placeholder="Username" required><br>
-            <input type="password" id="login-password" placeholder="Password" required><br>
-            <button type="submit">Login</button>
-        </form>
-        
-        <p>Token: <span id="token-display"></span></p>
-        <button id="logout-btn">Logout</button>
-    </div>
+    <p class="nav">
+        <a href="auth.html">Authentication</a>
+        <a href="projects.html">Projects</a>
+        <a href="tasks.html">Tasks</a>
+    </p>
 
-    <hr>
 
-    <div id="project-section">
-        <h2>Projects</h2>
-        
-        <h3>Create Project</h3>
-        <form id="create-project-form">
-            <input type="text" id="project-name" placeholder="Project Name" required><br>
-            <textarea id="project-description" placeholder="Description" required></textarea><br>
-            <button type="submit">Create Project</button>
-        </form>
-        
-        <h3>List Projects</h3>
-        <button id="list-projects-btn">Get Projects</button>
-        <div id="projects-list"></div>
-        
-        <h3>Get Project Tasks</h3>
-        <input type="number" id="project-id-tasks" placeholder="Project ID"><br>
-        <button id="get-project-tasks-btn">Get Tasks</button>
-        <div id="project-tasks-list"></div>
-        
-        <h3>Update Project</h3>
-        <form id="update-project-form">
-            <input type="number" id="update-project-id" placeholder="Project ID" required><br>
-            <input type="text" id="update-project-name" placeholder="New Name"><br>
-            <textarea id="update-project-description" placeholder="New Description"></textarea><br>
-            <button type="submit">Update Project</button>
-        </form>
-        
-        <h3>Delete Project</h3>
-        <input type="number" id="delete-project-id" placeholder="Project ID"><br>
-        <button id="delete-project-btn">Delete Project</button>
-    </div>
 
-    <hr>
-
-    <div id="task-section">
-        <h2>Tasks</h2>
-        
-        <h3>Create Task</h3>
-        <form id="create-task-form">
-            <input type="text" id="task-title" placeholder="Title" required><br>
-            <textarea id="task-description" placeholder="Description" required></textarea><br>
-            <select id="task-priority" required>
-                <option value="">Select Priority</option>
-                <option value="low">Low</option>
-                <option value="medium">Medium</option>
-                <option value="high">High</option>
-                <option value="critical">Critical</option>
-            </select><br>
-            <input type="date" id="task-due-date" required><br>
-            <select id="task-status" required>
-                <option value="">Select Status</option>
-                <option value="pending">Pending</option>
-                <option value="in_progress">In Progress</option>
-                <option value="completed">Completed</option>
-                <option value="on_hold">On Hold</option>
-            </select><br>
-            <input type="text" id="task-assigned-employees" placeholder="Assigned Employee IDs (comma separated)"><br>
-            <input type="number" id="task-project-id" placeholder="Project ID"><br>
-            <textarea id="task-comments" placeholder="Comments"></textarea><br>
-            <button type="submit">Create Task</button>
-        </form>
-        
-        <h3>My Tasks</h3>
-        <button id="list-tasks-btn">Get My Tasks</button>
-        <div id="tasks-list"></div>
-        
-        <h3>View Task Details</h3>
-        <input type="number" id="view-task-id" placeholder="Task ID"><br>
-        <button id="view-task-btn">View Task</button>
-        <div id="task-details"></div>
-        
-        <h3>Filter Tasks</h3>
-        <form id="filter-tasks-form">
-            <select id="filter-status">
-                <option value="">Any Status</option>
-                <option value="pending">Pending</option>
-                <option value="in_progress">In Progress</option>
-                <option value="completed">Completed</option>
-                <option value="on_hold">On Hold</option>
-            </select><br>
-            <select id="filter-priority">
-                <option value="">Any Priority</option>
-                <option value="low">Low</option>
-                <option value="medium">Medium</option>
-                <option value="high">High</option>
-                <option value="critical">Critical</option>
-            </select><br>
-            <input type="date" id="filter-due-date" placeholder="Due Date"><br>
-            <input type="number" id="filter-assigned-employee" placeholder="Assigned Employee ID"><br>
-            <button type="submit">Filter Tasks</button>
-        </form>
-        <div id="filtered-tasks-list"></div>
-        
-        <h3>Update Task</h3>
-        <form id="update-task-form">
-            <input type="number" id="update-task-id" placeholder="Task ID" required><br>
-            <input type="text" id="update-task-title" placeholder="Title"><br>
-            <textarea id="update-task-description" placeholder="Description"></textarea><br>
-            <select id="update-task-priority">
-                <option value="">Select Priority</option>
-                <option value="low">Low</option>
-                <option value="medium">Medium</option>
-                <option value="high">High</option>
-                <option value="critical">Critical</option>
-            </select><br>
-            <input type="date" id="update-task-due-date"><br>
-            <select id="update-task-status">
-                <option value="">Select Status</option>
-                <option value="pending">Pending</option>
-                <option value="in_progress">In Progress</option>
-                <option value="completed">Completed</option>
-                <option value="on_hold">On Hold</option>
-            </select><br>
-            <input type="text" id="update-task-assigned-employees" placeholder="Assigned Employee IDs (comma separated)"><br>
-            <textarea id="update-task-comments" placeholder="Comments"></textarea><br>
-            <button type="submit">Update Task</button>
-        </form>
-        
-        <h3>Delete Task</h3>
-        <input type="number" id="delete-task-id" placeholder="Task ID"><br>
-        <button id="delete-task-btn">Delete Task</button>
-    </div>
-        </div>
-
-        <div class="right-column">
-            <div id="response-section">
-                <h3>Response</h3>
-                <pre id="response-output"></pre>
-            </div>
-        </div>
-    </div>
+    <h3>Quick Response Output</h3>
+    <pre id="response-output"></pre>
 
     <script src="app.js"></script>
 </body>

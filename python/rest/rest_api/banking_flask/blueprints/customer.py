@@ -1,6 +1,6 @@
 from flask import Blueprint, request, jsonify
-from banking_flask.models import Customer, Base
-from banking_flask.db import session_local, engine
+from models import Customer, Base
+from db import session_local, engine
 import jwt
 import bcrypt
 import datetime
@@ -71,7 +71,7 @@ def view_one_customer(id):
             })
         return jsonify({"error": "Customer not found"}), 404
     
-@customer_bp.route('<int:id>', methods=['PUT'])
+@customer_bp.route('/<int:id>', methods=['PUT'])
 def update_customer(id):
     auth_header = request.headers.get('Authorization')
     if not auth_header or not auth_header.startswith('Bearer '):

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Transaction Management</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <h1>Transaction Management</h1>
+    <nav>
+        <a href="index.html">Home</a> | 
+        <a href="customer.html">Customers</a> | 
+        <a href="account.html">Accounts</a>
+    </nav>
+
+    <div id="transaction-form">
+        <h2>Create Transaction</h2>
+        <form id="addTransactionForm">
+            <select id="accountId" required>
+                <option value="">Select Account</option>
+            </select><br><br>
+            <select id="transactionType" required>
+                <option value="">Select Transaction Type</option>
+                <option value="deposit">Deposit</option>
+                <option value="withdrawal">Withdrawal</option>
+            </select><br><br>
+            <input type="number" id="amount" placeholder="Amount" min="0.01" step="0.01" required><br><br>
+            <button type="submit">Create Transaction</button>
+        </form>
+    </div>
+
+    <div id="transaction-list">
+        <h2>Transactions</h2>
+        <select id="filterAccountId">
+            <option value="">Filter by Account</option>
+        </select>
+        <button onclick="loadAccountTransactions()">Filter</button>
+        <div id="transactions"></div>
+    </div>
+
+    <script src="app.js?v=2"></script>
+    <script>
+        // Transaction-specific initialization
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Transaction page loaded');
+            console.log('accountId element:', document.getElementById('accountId'));
+            console.log('filterAccountId element:', document.getElementById('filterAccountId'));
+            
+            // Test manual population
+            setTimeout(() => {
+                const select = document.getElementById('accountId');
+                console.log('After loadAccounts, accountId has', select.options.length, 'options');
+                console.log('Options:', Array.from(select.options).map(o => o.value));
+            }, 2000);
+            
+            loadAccounts();
+            setupTransactionForms();
+        });
+    </script>
+</body>
+</html>

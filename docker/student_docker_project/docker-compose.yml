@@ -1,0 +1,46 @@
+version: "3.9"
+
+services:
+  db:
+    image: mysql:8
+    environment:
+      MYSQL_ROOT_PASSWORD: admin@123
+      MYSQL_DATABASE: student_db
+      MYSQL_USER: student
+      MYSQL_PASSWORD: student123
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - student_net
+
+  backend:
+    image: student_project:latest
+    pull_policy: never
+    build: ./backend
+    ports:
+      - "5000:5000"
+    depends_on:
+      - db
+    deploy:
+      replicas: 2
+    networks:
+      - student_net
+
+  frontend:
+    image: nginx:latest
+    ports:
+      - "8081:80"
+    volumes:
+      - ./frontend:/usr/share/nginx/html
+    deploy:
+      replicas: 1
+    networks:
+      - student_net
+
+volumes:
+  db_data:
+
+networks:
+  student_net:
+
+

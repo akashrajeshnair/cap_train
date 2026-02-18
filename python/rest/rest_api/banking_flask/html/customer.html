@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Customer Management</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <h1>Customer Management</h1>
+    <nav>
+        <a href="index.html">Home</a> | 
+        <a href="account.html">Accounts</a> | 
+        <a href="transaction.html">Transactions</a>
+    </nav>
+
+    <div id="customer-form">
+        <h2>Add Customer</h2>
+        <form id="addCustomerForm">
+            <input type="text" id="customerName" placeholder="Customer Name" required><br><br>
+            <input type="email" id="customerEmail" placeholder="Email" required><br><br>
+            <input type="tel" id="customerPhone" placeholder="Phone" required><br><br>
+            <textarea id="customerAddress" placeholder="Address" required></textarea><br><br>
+            <button type="submit">Add Customer</button>
+        </form>
+    </div>
+
+    <div id="customer-list">
+        <h2>Customers</h2>
+        <button onclick="loadCustomers()">Load Customers</button>
+        <div id="customers"></div>
+    </div>
+
+    <div id="customer-update" style="display:none;">
+        <h2>Update Customer</h2>
+        <form id="updateCustomerForm">
+            <input type="hidden" id="updateCustomerId">
+            <input type="text" id="updateCustomerName" placeholder="Customer Name" required><br><br>
+            <input type="email" id="updateCustomerEmail" placeholder="Email" required><br><br>
+            <input type="tel" id="updateCustomerPhone" placeholder="Phone" required><br><br>
+            <textarea id="updateCustomerAddress" placeholder="Address" required></textarea><br><br>
+            <button type="submit">Update Customer</button>
+            <button type="button" onclick="cancelUpdate()">Cancel</button>
+        </form>
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+        // Customer-specific initialization
+        document.addEventListener('DOMContentLoaded', function() {
+            loadCustomers();
+            setupCustomerForms();
+        });
+    </script>
+</body>
+</html>

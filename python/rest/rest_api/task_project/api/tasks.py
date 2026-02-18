@@ -1,6 +1,6 @@
 from flask import Blueprint, request, jsonify
-from task_project.db.models import Task, Base, task_assignments, User
-from task_project.db.db import session_local, engine
+from db.models import Task, Base, task_assignments, User
+from db.db import session_local, engine
 import jwt
 
 task_bp = Blueprint('task', __name__, url_prefix='/task')

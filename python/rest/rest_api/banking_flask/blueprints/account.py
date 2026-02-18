@@ -1,6 +1,6 @@
 from flask import Blueprint, request, jsonify
-from banking_flask.models import Account, Base
-from banking_flask.db import session_local, engine
+from models import Account, Base
+from db import session_local, engine
 
 account_bp = Blueprint('account', __name__, url_prefix='/accounts')
 

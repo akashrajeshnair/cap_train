@@ -1,6 +1,6 @@
 from flask import Blueprint, request, jsonify
-from banking_flask.db import session_local
-from banking_flask.models import Transaction, Account
+from db import session_local
+from models import Transaction, Account
 from datetime import datetime
 
 transaction_bp = Blueprint('transactions', __name__)
